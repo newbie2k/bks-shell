@@ -24,15 +24,13 @@ char* getString(void) {
 	STATUS = SPACE;
 
 
-    word = malloc(sizeof(char) * 1);              // Assinged by malloc because word is going to used
-									              // by realloc function.
+    word = malloc(sizeof(char) * 1);              // Assinged by malloc because word is going to used by realloc function.
 
 
     while((c = getchar()) != ' ' ) {
 		
 		if(c == '\n') {
-			STATUS = NEWLINE;                     // Used to Know how getString() function return by 
-												  // pressing ENTER KEY or SPACE KEY
+			STATUS = NEWLINE;                     // Used to Know how getString() function return by pressing ENTER KEY or SPACE KEY
 			break;
 		}
         word = realloc(word, n + 1);
@@ -56,8 +54,7 @@ int main(void) {
 	do{	
 	    printf("\nbks >$ ");
 	    cmd = getString();
-		if(STATUS != NEWLINE) {                 // If ENTER KEY is not press i.e. we press SPACE KEY
-												// and about to give Options or Argument.
+		if(STATUS != NEWLINE) {                 // If ENTER KEY is not press i.e. we press SPACE KEY and about to give Options or Argument.
 			tmp = getString();
 			if(tmp[0] == '-') {                 // If have Options
 				opt = tmp;
@@ -68,8 +65,7 @@ int main(void) {
 		}
 		printf("Command = %s, Argument = %s and Option = %s ",cmd,opt,arg);
 		
-	}while((strcmp(cmd,"quit") != 0) && (strcmp(cmd,"exit") != 0));        // Type "quit" or "exit" (without quots) 
-																		   // to exit from program.
+	}while((strcmp(cmd,"quit") != 0) && (strcmp(cmd,"exit") != 0));        // Type "quit" or "exit" (without quots) to exit from program.
 
 }
 
