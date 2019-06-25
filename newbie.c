@@ -1,6 +1,6 @@
 /**
  * @author      : Bhaskar Singh (bhaskar.kernel@gmail.com)
- * @file        : bks.c
+ * @file        : newbie.c
  * @created     : Sunday Jun 23, 2019 00:44:40 IST
  */
 
@@ -149,7 +149,3 @@ int main(void) {
 		free(arg);
 		free(opt);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 97764daf6a54f4f3444f2e6423cfcd582f8f9cbe
