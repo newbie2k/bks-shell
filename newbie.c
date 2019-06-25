@@ -33,13 +33,14 @@ char *readinput(void) {
 	word =
 	    malloc(sizeof(char) * SIZE);  // Assinged by malloc because word is
 					  // going to used by realloc function.
+	word[0] = '\0';   // Handle Error!
 
 	while ((c = getchar()) != ' ') {
 		if (c == '\n') {
 			/* Used to Know how readinput() function return by
 			   pressing ENTER KEY or SPACE KEY */
 			PRESSED_KEY = NEWLINE;
-			break;
+			return word;
 		}
 
 		if (count == SIZE * n)  // Increasing Size
@@ -47,6 +48,10 @@ char *readinput(void) {
 
 		word[count++] = c;
 		word[count] = '\0';
+	}
+	if(word[0] == '\0') {    // Handle Error! if command start with SPACES
+		while(getchar() != '\n');
+		PRESSED_KEY = NEWLINE;
 	}
 	return word;
 }
@@ -80,7 +85,7 @@ int main(void) {
 	char *usrname = NULL;  // USER Env Variable Value
 
 	usrname = getenv("USER");
-
+	
 	while (1) {
 		int n = 1;  // Used to increase the size of word
 		int count = 0;
@@ -109,6 +114,10 @@ int main(void) {
 			break;
 		} else {
 			fflush(stdout);
+			if(*argv[0] == '\0') {
+				free(argv);
+				continue;
+			}
 			runcommand(argv[0], argv);
 		}
 		free(argv);
